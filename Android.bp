@@ -296,6 +296,24 @@ cc_library {
     vendor: true
 }
 
+cc_prebuilt_library_shared {
+    name: "libcrypto-v33",
+    vendor: true,
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: ["vndk/v33/arm/libcrypto-v33.so"],
+        },
+        android_arm64: {
+            srcs: ["vndk/v33/arm64/libcrypto-v33.so"],
+        },
+    },
+    compile_multilib: "both",
+    check_elf_files: false,
+}
+
 cc_library {
     name: "libcutils_shim",
     shared_libs: [
@@ -354,20 +372,6 @@ cc_library_shared {
     shared_libs: ["libpiex"],
     srcs: ["libpiex/piex_shim.cpp"],
     vendor: true,
-}
-
-cc_library_shared {
-    name: "libprotobuf-cpp-lite-3.9.1-vendorcompat",
-    stem: "libprotobuf-cpp-lite-3.9.1",
-    vendor: true,
-    target: {
-        android_arm: {
-            shared_libs: ["libprotobuf-cpp-full-3.9.1-vendorcompat"],
-        },
-        android_arm64: {
-            shared_libs: ["libprotobuf-cpp-full-3.9.1-vendorcompat"],
-        },
-    },
 }
 
 cc_library_shared {
