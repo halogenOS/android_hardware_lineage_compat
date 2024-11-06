@@ -384,7 +384,8 @@ cc_library {
     srcs: [
         "libcrypto/cbs.c",
     ],
-    vendor: true
+    system_ext_specific: true,
+    vendor_available: true,
 }
 
 cc_library {
@@ -415,7 +416,9 @@ cc_library {
 
 cc_prebuilt_library_shared {
     name: "libhidlbase-v32",
-    vendor: true,
+    system_ext_specific: true,
+    recovery_available: true,
+    vendor_available: true,
     strip: {
         none: true,
     },
@@ -458,6 +461,15 @@ cc_library {
     ],
     compile_multilib: "64",
     system_ext_specific: true,
+}
+
+cc_library {
+    name: "libmeminfo_shim",
+    shared_libs: ["libmeminfo"],
+    srcs: [
+        "libmeminfo/procmeminfo.cpp",
+    ],
+    vendor: true,
 }
 
 cc_library {
