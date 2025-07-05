@@ -263,7 +263,6 @@ cc_defaults {
     srcs: [
         "libgui/GraphicBufferProducer.cpp",
         "libgui/SurfaceComposerClient.cpp",
-        "libgui/Transaction.cpp",
     ],
 }
 
